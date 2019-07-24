@@ -1,8 +1,8 @@
 {
-  "name": "@glipecki/optional",
-  "version": "0.14.0",
+  "name": "@consdata/optional",
+  "version": "1.0.0",
   "description": "Optional implementation for TypeScript projects",
-  "repository": "git@github.com:glipecki/optional.ts.git",
+  "repository": "git@github.com:Consdata/optional.git",
   "author": "Grzegorz Lipecki <grzegorz.lipecki@gmail.com>",
   "license": "MIT",
   "main": "dist/index.umd.js",
