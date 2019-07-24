@@ -1,8 +1,8 @@
 {
-  "name": "@glipecki/optional",
-  "version": "0.14.0",
+  "name": "@consdata/optional",
+  "version": "1.0.0",
   "description": "Optional implementation for TypeScript projects",
-  "repository": "git@github.com:glipecki/optional.ts.git",
+  "repository": "git@github.com:Consdata/optional.git",
   "author": "Grzegorz Lipecki <grzegorz.lipecki@gmail.com>",
   "license": "MIT",
   "main": "dist/index.umd.js",
@@ -21,7 +21,7 @@
     "build:bundle": "rollup -c rollup.config.js",
     "build:dist": "copyfiles -u 3 '.build/**/*.d.ts' dist",
     "build:coverage": "cat dist/coverage/lcov.info | coveralls",
-    "build": "yarn build:compile && yarn build:lint && yarn build:test && yarn build:bundle && yarn docs && yarn build:dist && yarn build:coverage",
+    "build": "yarn build:compile && yarn build:lint && yarn build:test && yarn build:bundle && yarn docs && yarn build:dist",
     "watch": "tsc -p src/tsconfig.lib.json -w --no-emit",
     "docs": "typedoc --out dist/docs --target es5 --theme default --mode file --tsconfig src/tsconfig.lib.json --excludePrivate --excludeProtected --exclude '**/*.spec.ts' src",
     "release": "yarn build && yarn publish --minor --non-interactive --access public && git push && git push --tags"
