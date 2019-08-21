@@ -123,6 +123,18 @@ export class Optional<T> {
     }
 
     /**
+     * Gets stored value if present or throws error provided by supplier.
+     * @param errorSupplier error factory method
+     */
+    public orThrow(errorSupplier: () => Error): T {
+        if (this.isPresent()) {
+            return this.value;
+        } else {
+            throw errorSupplier();
+        }
+    }
+
+    /**
      * Calls consumer with stored value if present.
      * otherwise performs the given empty action.
      * @param consumer
