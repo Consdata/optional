@@ -94,6 +94,34 @@ describe('Optional for null value', () => {
 
 });
 
+describe('Optional for undefined value', () => {
+
+    const optional = Optional.of<TestValue>(undefined);
+
+    it('should return false for isPresent', () => {
+        expect(optional.isPresent()).toBeFalsy();
+    });
+
+    it('should return null for get', () => {
+        expect(optional.get()).toBeNull();
+    });
+
+});
+
+describe('Optional for false value', () => {
+
+    const optional = Optional.of(false);
+
+    it('should return true for isPresent', () => {
+        expect(optional.isPresent()).toBeTruthy();
+    });
+
+    it('should return false for get', () => {
+        expect(optional.get()).toBeFalsy();
+    });
+
+});
+
 describe('Optional for non-null value', () => {
 
     const value: TestValue = {
