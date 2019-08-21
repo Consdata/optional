@@ -94,10 +94,38 @@ describe('Optional for null value', () => {
 
 });
 
+describe('Optional for undefined value', () => {
+
+    const optional = Optional.of<TestValue>(undefined);
+
+    it('should return false for isPresent', () => {
+        expect(optional.isPresent()).toBeFalsy();
+    });
+
+    it('should return null for get', () => {
+        expect(optional.get()).toBeNull();
+    });
+
+});
+
+describe('Optional for false value', () => {
+
+    const optional = Optional.of(false);
+
+    it('should return true for isPresent', () => {
+        expect(optional.isPresent()).toBeTruthy();
+    });
+
+    it('should return false for get', () => {
+        expect(optional.get()).toBeFalsy();
+    });
+
+});
+
 describe('Optional for non-null value', () => {
 
     const value: TestValue = {
-        name: 'Gandalf',
+        name: 'Gandalf'
     };
     const optional = Optional.of(value);
 
@@ -183,6 +211,46 @@ describe('Optional.ifPresent', () => {
         Optional.of(expectedValue).ifPresent(value => callbackValue = value);
 
         expect(callbackValue).toBe(expectedValue);
+    });
+
+});
+
+describe('Optional.ifPresentOrElse', () => {
+
+    it('should call callback with value if present', () => {
+        const expectedValue = 'expectedValue';
+        const otherValue = 'otherValue';
+        let callbackValue;
+
+        Optional.of(expectedValue).ifPresentOrElse(v => callbackValue = v, () => callbackValue = otherValue);
+
+        expect(callbackValue).toBe(expectedValue);
+    });
+
+    it('should treat false as present value', () => {
+        let callbackValue;
+
+        Optional.of(false).ifPresentOrElse(value => callbackValue = value, () => callbackValue = true);
+
+        expect(callbackValue).toBeFalsy();
+    });
+
+    it('should call empty action if value is null', () => {
+        const expectedValue = 'expectedValue';
+        const otherValue = 'otherValue';
+        let callbackValue;
+
+        Optional.of(null).ifPresentOrElse(v => callbackValue = expectedValue, () => callbackValue = otherValue);
+
+        expect(callbackValue).toBe(otherValue);
+    });
+
+    it('should call empty action if value is undefined', () => {
+        let callbackValue;
+
+        Optional.of(undefined).ifPresentOrElse(value => callbackValue = value, () => callbackValue = true);
+
+        expect(callbackValue).toBeTruthy();
     });
 
 });
