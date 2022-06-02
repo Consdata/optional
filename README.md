@@ -1,3 +1,3 @@
 # @consdata/optional
 
-[![Build Status](https://travis-ci.org/Consdata/optional.svg?branch=master)](https://travis-ci.org/Consdata/optional)
+[![Build status](https://github.com/Consdata/optional/actions/workflows/node.js.yml/badge.svg)](https://github.com/Consdata/optional/actions/workflows/node.js.yml)
